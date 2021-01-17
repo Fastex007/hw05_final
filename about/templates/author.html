@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Об авторе{% endblock %}
+{% block header %}Технологии{% endblock %}
+{% block content %}
+{% load user_filters %}
+{% load static %}
+  <main role="main" class="container">
+      <div class="row">
+          <!-- Левый вспомогательный блок -->
+          <div class="col-md-3 mb-3 mt-1">
+              <div class="card custom_card fixed_div">
+                  <div class="card-body">
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item custom_card">
+                              <a href="#about_author_topic"><div class="h6 text-muted">Об авторе</div></a>
+                              <a href="#our_team_topic"><div class="h6 text-muted">Наша команда</div></a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <!-- Тело страницы -->
+          <div class="col-md-9">
+              <div class="card-body">
+                  <p id="about_author_topic"><h4>Об авторе</h4></p>
+                  <div class="card-text">
+                      <p>Привет!</p>
+                      <p>
+                          Меня зовут <b>Олег</b>, я из подмосковного города Королёва.
+                      </p>
+                      <p>
+                          Я профессиональный программист с двумя дипломами, 10.5 годами опыта на C++, очень узкой специализацией и так себе образованием.
+                          Я закончил
+                          <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%91%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6_%D0%BA%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B8_%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8">
+                              КККМТ
+                          </a>
+                          (Королёвский колледж космического машиностроение и технологии) по специальности <b>Программное обеспечение вычислительной техники и автоматизированных систем</b> в 2010 году,
+                           а потом
+                          <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82">
+                            МАМИ
+                          </a>
+                            (Московский государственный машиностроительный университет) в 2015 году, который сейчас почему-то называется политехнический О_о, по той же специальности.
+                      </p>
+                      <p>
+                          С детства нравились всякие автоматизированные и умные штуки, которые сами что-то делают. Так я и попал в программирование.
+                      </p>
+                      <p>
+                          10.5 лет я работаю в Авиационном регистре Российской Федерации и пишу там системы обработки полётной информации для самолётов гражданской авиации (системы расшифровки чёрных ящиков),
+                          а так же сопутствующую инфраструктуру: системы хранения информациции в БД, аналитика информации из БД, написал даже интерпретатор для того, чтобы пользователи могли сами реализовывать алгоритмы анализа информации.
+                      </p>
+                      <p>
+                          Специализация довольно нестандартная, инструменты для разработки тоже. Отсутствуют многие понятия из того, что принято в мировой практике. Ну, и много ещё разного рода веселья.
+                      </p>
+                      <p>
+                          Хочется упорядочить знания, понять, как устроены и работают большие интересные проекты, а так же понять, как устроена работа в команде с использованием всех командных средств разработки.
+                      </p>
+                      <p>
+                          Собственно, поэтому я здесь :)
+                      </p>
+                  </div>
+                  <div class="social_wrap">
+                      <div class="social">
+                          <a href="https://github.com/Fastex007" target="_blank" title="github">
+                              <img class="social_image" src="{% static "about/images/github-logo.png" %}" alt="github">
+                          </a>
+                      </div>
+                      <div class="social">
+                          <a href="https://hh.ru/resume/80e8d8e3ff082b248e0039ed1f3867324f3537" target="_blank" title="ХХ">
+                              <img class="social_image" src="{% static "about/images/hh-logo.png" %}" alt="github">
+                          </a>
+                      </div>
+                      <div class="social">
+                          <a href="https://www.instagram.com/fastex007/" target="_blank" title="Instagram">
+                              <img class="social_image" src="{% static "about/images/instagram-logo.png" %}" alt="github">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="card-body">
+                  <p id="our_team_topic"><h4>Наша команда</h4></p>
+                  <div class="team_wrap">
+
+                      <div class="team_member">
+                          <div class="team_member_photo">
+                              <img class="member_photo" src="{% static "about/images/vasilisa.png" %}">
+                          </div>
+                          <div class="team_member_description">
+                              <div class="member_name">Василиса</div>
+                              <div class="member_grade">Project manager</div>
+                              <div class="member_description">Самый мудрый и неуклюжий член команды. Стоит ей запрыгнуь на подоконник, как тут же валятся горшки с цветами. Даже в других комнатах.</div>
+                          </div>
+                      </div>
+
+                      <div class="team_member">
+                          <div class="team_member_photo">
+                              <img class="member_photo" src="{% static "about/images/djonik.png" %}">
+                          </div>
+                          <div class="team_member_description">
+                              <div class="member_name">Johny D'Lear McGreaf</div>
+                              <div class="member_grade">Team lead</div>
+                              <div class="member_description">Все время спит и не мешает работать. Всегда готов воремя напомнить, что пора отдохнуть и погулять (с ним).</div>
+                          </div>
+                      </div>
+
+                      <div class="team_member">
+                          <div class="team_member_photo">
+                              <img class="member_photo" src="{% static "about/images/tishka.png" %}">
+                          </div>
+                          <div class="team_member_description">
+                              <div class="member_name">Тишка (он же Dandelion)</div>
+                              <div class="member_grade">QA engineer</div>
+                              <div class="member_description">Теструет нервную систему всего персонала.</div>
+                          </div>
+                      </div>
+
+                      <div class="team_member">
+                          <div class="team_member_photo">
+                              <img class="member_photo" src="{% static "about/images/zeliboba.png" %}">
+                          </div>
+                          <div class="team_member_description">
+                              <div class="member_name">Тобиас (Тоба)</div>
+                              <div class="member_grade">Middle developer</div>
+                              <div class="member_description">Самый мотивированный член команды. За любую движуху, даже за голодовку.</div>
+                          </div>
+                      </div>
+
+                      <div class="team_member">
+                          <div class="team_member_photo">
+                              <img class="member_photo" src="{% static "about/images/sheldon_svinina.png" %}">
+                          </div>
+                          <div class="team_member_description">
+                              <div class="member_name">Шелдон (потому что Шелти)</div>
+                              <div class="member_grade">Junior developer</div>
+                              <div class="member_description">Морская свинина. Пока только ест.</div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
+{% endblock %}
