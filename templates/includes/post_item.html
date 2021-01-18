@@ -27,7 +27,7 @@
       <div class="btn-group">
         {% if post.comments.exists %}
         <div>
-            Комментариев: {{ post.comments.count }}
+          <a class="btn btn-sm btn" >Комментариев: {{ post.comments.count }}</a>
         </div>
         {% endif %}
         {% if user.is_authenticated %}
@@ -45,7 +45,7 @@
       </div>
 
       <!-- Дата публикации поста -->
-      <small class="text-muted">{{ post.pub_date }}</small>
+      <small class="text-muted">{{ post.pub_date|date:"d M Y" }}</small>
     </div>
   </div>
 </div>

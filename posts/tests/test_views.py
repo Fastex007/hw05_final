@@ -38,17 +38,13 @@ class PostsPagesTests(MyTestCase):
         post_text_0 = response.context.get('page')[0].text
         post_author_0 = response.context.get('page')[0].author
         post_group_0 = response.context.get('page')[0].group
-        # post_image_0 = response.context.get('page')[0].image
 
         self.assertEqual(post_text_0, PostsPagesTests.test_post.text)
         self.assertEqual(post_author_0, PostsPagesTests.test_user)
         self.assertEqual(post_group_0, PostsPagesTests.test_group)
-        # Тут post_image_0 = 'posts/small.gif'
-        # а PostsPagesTests.uploaded.name = 'small.gif'
-        # а settings.MEDIA_ROOT = рандомное название временных папок
-        # Как быть ?
-        # self.assertEqual(
-        # post_image_0, 'posts/'+PostsPagesTests.uploaded.name)
+        # в response.content содержится такое имя
+        # <img class="card-img"
+        # src="/media/cache/92/fc/92fc9ce05ed8d55fe1a4fc232d150188.jpg" />
         self.assertContains(response, '<img')
 
     def test_index_page_show_correct_context(self):
@@ -304,4 +300,9 @@ class CommentTests(MyTestCase):
              'author': CommentTests.test_user},
             follow=True,
         )
-        self.assertEqual(Comment.objects.count(), 0)
+
+        comments = Comment.objects.filter(
+            author=CommentTests.test_user,
+            post=CommentTests.test_post
+        )
+        self.assertEqual(comments.count(), 1)

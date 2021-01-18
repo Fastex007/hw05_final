@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client, TestCase
 
-from posts.models import Group, Post, User
+from posts.models import Comment, Follow, Group, Post, User
 
 
 class MyTestCase(TestCase):
@@ -23,6 +23,11 @@ class MyTestCase(TestCase):
         cls.test_author = User.objects.create_user(
             username='test_author',
             password='123456'
+        )
+
+        cls.test_following = Follow.objects.create(
+            user=cls.test_user,
+            author=cls.test_author,
         )
 
         cls.non_author = User.objects.create_user(
@@ -64,6 +69,13 @@ class MyTestCase(TestCase):
                  'один два три четрые пять',
             author=cls.test_user,
             image=cls.uploaded,
+        )
+
+        cls.test_comment = Comment.objects.create(
+            id=1,
+            post=cls.test_post,
+            author=cls.test_user,
+            text='Тестовый комментарий',
         )
 
     @classmethod

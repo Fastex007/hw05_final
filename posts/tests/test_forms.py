@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 from posts.lib.MyTestCase import MyTestCase
-from posts.models import Post
+from posts.models import Comment, Post
 
 
 class PostsFormTests(MyTestCase):
@@ -43,3 +43,35 @@ class PostsFormTests(MyTestCase):
 
         self.assertTrue(Post.objects.filter(
             text='Обновлённый текст').exists())
+
+    def test_create_comment(self):
+        """Валидная форма создает запись в Comment."""
+        comment_count = Comment.objects.count()
+
+        form_data = {
+            'post': PostsFormTests.test_post.id,
+            'author': PostsFormTests.test_user,
+            'text': 'Тестовый комментарий',
+        }
+
+        response = self.authorized_client.post(
+            reverse(
+                'add_comment',
+                kwargs={'username': PostsFormTests.test_user,
+                        'post_id': PostsFormTests.test_post.id}
+            ),
+            data=form_data,
+            follow=True
+        )
+
+        self.assertRedirects(
+            response,
+            reverse(
+                'post',
+                kwargs={
+                    'username': PostsFormTests.test_user.username,
+                    'post_id': PostsFormTests.test_post.id
+                }
+            )
+        )
+        self.assertEqual(Comment.objects.count(), comment_count + 1)

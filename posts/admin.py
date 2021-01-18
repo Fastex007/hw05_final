@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from .models import Comment, Follow, Group, Post
 
@@ -8,7 +9,15 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('pk', 'group', 'text', 'pub_date', 'author')
     search_fields = ('text',)
     list_filter = ('pub_date',)
+    readonly_fields = ('image_tag',)
+    fields = ('image_tag', 'group', 'text')
     empty_value_display = '-пусто-'
+
+    def image_tag(self, instance):
+        return format_html(
+            '<img src="{0}" style="max-width: 100%"/>',
+            instance.image.url
+        )
 
 
 @admin.register(Group)

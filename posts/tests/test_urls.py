@@ -116,7 +116,7 @@ class ProfileURLTests(MyTestCase):
             )
         )
 
-    def test_page_not_fount_works_correct(self):
+    def test_page_not_found_works_correct(self):
         """Запрос к неизвестной странице возвращает статус 404."""
         response = self.guest_client.get('/unknown_ulr/')
         self.assertEqual(response.status_code, 404)
