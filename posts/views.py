@@ -12,13 +12,9 @@ POSTS_PER_PAGE = 10
 
 def check_following(user, author):
     """Проверяет наличие одписки на автора."""
-    has_follow = False
-    if user.is_authenticated and user != author:
-        has_follow = Follow.objects.select_related('follower').filter(
-            author=author
-        ).exists()
-
-    return has_follow
+    return user.is_authenticated and user != author and user.follower.filter(
+        author=author
+    ).exists()
 
 
 def index(request):
