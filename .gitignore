@@ -25,3 +25,5 @@ media/
 .coverage
 
 db.sqlite3
+
+settings.py
